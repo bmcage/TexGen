@@ -41,10 +41,12 @@ LINK_DIRECTORIES(${VTK_LIBRARY_DIRS} )
 IF(UNIX)
 	ADD_DEFINITIONS("`pkg-config --cflags gtk+-2.0`")
 	ADD_DEFINITIONS("`wx-config --cflags`")
-	TARGET_LINK_LIBRARIES(${VTK_LIBRARIES}
-		${wxWidgets_LIBRARIES}
-		#optimized ${PYTHON_LIBRARIES})
-		${PYTHON_LIBRARIES})
+	#TARGET_LINK_LIBRARIES(
+	#${VTK_LIBRARIES}
+	#${wxWidgets_LIBRARIES}
+	#optimized ${PYTHON_LIBRARIES})
+	#${PYTHON_LIBRARIES}
+	#)
 ENDIF(UNIX)
 
 ADD_CUSTOM_COMMAND(OUTPUT "${CMAKE_CURRENT_SOURCE_DIR}/Embedded_wrap.cxx"
@@ -68,7 +70,7 @@ IF(WIN32)
 	TexGenCore
 	opengl32 
 	glu32
-    ${VTK_LIBRARIES}
+	${VTK_LIBRARIES}
 	${wxWidgets_LIBRARIES}
 	optimized ${PYTHON_LIBRARIES}
 	comctl32
